@@ -7,46 +7,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D
 
-'''SORTING DATA WHEN ITS NOT ALREADY IN KERAS
-def create_training_data():
-    for category in CATEGORIES:
-        path = os.path.join(data_dir, category) # goes into specified category in given path
-        class_num = CATEGORIES.index(category)
-        for img in os.listdir(path): # lists all image in current location
-            try:
-                img_array = cv2.imread(os.path.join(path,img), cv2.IMREAD_GRAYSCALE) # Converts inmage to array, must specify grAYSCALE!
-                new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
 
-                training_data.append([new_array,class_num])
-            except Exception as e:
-                pass # Pass the images that may be problematic
-
-# Setup -----------
-
-data_dir = "/Users/queenro/PycharmProjects/Digit_Predictor/shapes"
-
-CATEGORIES = ["circles", "triangles"]
-
-training_data = []
-
-IMG_SIZE = 28
-# ----------------------
-create_training_data()
-
-random.shuffle(training_data)
-
-X = []  # will contain each input/image as a matrix/array
-y = []
-for features,label in training_data:  # Don't do this directly in create training data method in order to shuffle first
-    X.append(features)
-    y.append(label)
-
-
-# ---------- Seperate into training and test
-x_train, x_test = X[:70], X[70:]
-y_train, y_test = y[:70], y[70:]
-
-'''
 mnist = tf.keras.datasets.mnist
 
 (x_train,y_train), (x_test,y_test) = mnist.load_data()
